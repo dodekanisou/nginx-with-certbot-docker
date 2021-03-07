@@ -1,7 +1,7 @@
 FROM nginx:1.19
 
 RUN apt-get update && apt-get install -y \
-  python-pip python-dev libffi-dev libssl-dev libxml2-dev libxslt1-dev zlib1g-dev dialog \
+  python3.6 python3-pip python-dev-tools python-is-python3 libffi-dev libssl-dev libxml2-dev libxslt1-dev zlib1g-dev dialog \
   && rm -rf /var/lib/apt/lists/*
 
 RUN pip install certbot-azure
