@@ -9,4 +9,6 @@ RUN --mount=type=cache,target=/var/cache/apt \
 RUN --mount=type=cache,target=/root/.cache/pip \
   pip3 install --upgrade certbot-azure cryptography
 
-ENTRYPOINT ["/bin/sh","-c","while :; do sleep 12h & wait $!; certbot certonly -d $DomainName -a dns-azure --dns-azure-credentials /var/azure-dns-cred.json --dns-azure-resource-group $AzureDnsResourceGroup --renew-by-default --text --email $ContactEmail --agree-tos -q; nginx -s reload; done & nginx -g 'daemon off;'"]
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT ["entrypoint.sh"]
