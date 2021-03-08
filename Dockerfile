@@ -11,4 +11,4 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
-ENTRYPOINT ["entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
