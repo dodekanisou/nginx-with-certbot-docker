@@ -9,7 +9,13 @@ You will need a `/var/azure-dns-cred.json` file with the following content, as s
     "clientId": "<GUID>",
     "clientSecret": "<Password>",
     "subscriptionId": "<GUID>",
-    "tenantId": "<GUID>"
+    "tenantId": "<GUID>",
+    "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
+    "resourceManagerEndpointUrl": "https://management.azure.com/",
+    "activeDirectoryGraphResourceId": "https://graph.windows.net/",
+    "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
+    "galleryEndpointUrl": "https://gallery.azure.com/",
+    "managementEndpointUrl": "https://management.core.windows.net/"
 }
 ```
 
