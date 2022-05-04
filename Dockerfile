@@ -7,8 +7,8 @@ RUN --mount=type=cache,target=/var/cache/apt \
   && rm -rf /var/lib/apt/lists/*
 
 # pip will clone the repo in /tmp/
-RUN --mount=type=cache,target=/root/.cache/pip \
-  --mount=type=cache,id=nuget,target=/tmp/ \
+RUN --mount=type=cache,id=pipcache,target=/root/.cache/pip \
+  --mount=type=cache,id=tmp,target=/tmp/ \
   pip3 install --upgrade cryptography git+https://github.com/dodekanisou/certbot-azure.git
 
 COPY entrypoint.sh /entrypoint.sh
