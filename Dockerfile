@@ -7,7 +7,7 @@ RUN --mount=type=cache,target=/var/cache/apt \
   && rm -rf /var/lib/apt/lists/*
 
 RUN --mount=type=cache,target=/root/.cache/pip \
-  pip3 install --upgrade certbot-azure cryptography
+  pip3 install --upgrade cryptography git+https://github.com/dodekanisou/certbot-azure.git
 
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
