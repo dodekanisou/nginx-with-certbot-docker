@@ -1,6 +1,6 @@
 # Dockerfile for nginx and certbot
 
-Trying to pack [certbot-azure](https://github.com/dlapiduz/certbot-azure) and nginx in a single docker image to deploy to RPI 4b (target linux/arm64).
+Trying to pack a forked version of [certbot-azure](https://github.com/dodekanisou/certbot-azure) and nginx in a single docker image to deploy to RPI 4b (target linux/arm64). Docker images available in [docker hub](https://hub.docker.com/r/dodekanisou/nginx-with-certbot/tags).
 
 You will need a `/var/azure-dns-cred.json` file with the following content, as seen in [this page](https://docs.microsoft.com/en-us/azure/developer/github/connect-from-azure):
 
