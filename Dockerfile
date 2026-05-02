@@ -1,15 +1,17 @@
 # syntax = docker/dockerfile:1.2
-FROM nginx:1.21.6
+FROM nginx:1.30.0
 
 RUN --mount=type=cache,target=/var/cache/apt \
   apt-get update && apt-get install -y \
-  python3 python3-pip cython3 libffi-dev rustc libssl-dev git \
+  python3 python3-pip python3-venv cython3 libffi-dev rustc libssl-dev git \
   && rm -rf /var/lib/apt/lists/*
 
-# pip will clone the repo in /tmp/
-RUN --mount=type=cache,id=pipcache,target=/root/.cache/pip \
-  --mount=type=cache,id=tmp,target=/tmp/ \
-  pip3 install --upgrade cryptography git+https://github.com/dodekanisou/certbot-azure.git
+RUN python3 -m venv /opt/certbot \
+  && /opt/certbot/bin/python3 -m pip install --upgrade pip setuptools wheel \
+  && /opt/certbot/bin/pip install --no-cache-dir certbot git+https://github.com/dodekanisou/certbot-azure.git
+
+ENV PATH="/opt/certbot/bin:$PATH"
+ENV VIRTUAL_ENV="/opt/certbot"
 
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
