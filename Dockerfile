@@ -1,5 +1,5 @@
 # syntax = docker/dockerfile:1.2
-FROM nginx:1.30.0
+FROM nginx:1.31.3
 
 RUN --mount=type=cache,target=/var/cache/apt \
   apt-get update && apt-get install -y \
